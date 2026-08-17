@@ -1,0 +1,18 @@
+# OshudhSathi (ওষুধসাথী) cPanel Hosting Structure & Rewrite Rules
+
+RewriteEngine On
+
+# 1. API requests -> Proxy to Node.js App (running on port 3001)
+RewriteRule ^api/(.*)$ http://localhost:3001/api/$1 [P,L]
+
+# 2. Admin panel SPA routing (/admin/*)
+RewriteCond %{REQUEST_URI} ^/admin
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^admin/(.*)$ /admin/index.html [L]
+
+# 3. Landing page SPA routing (/*)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/api
+RewriteCond %{REQUEST_URI} !^/admin
+RewriteRule ^(.*)$ /index.html [L]

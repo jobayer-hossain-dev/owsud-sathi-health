@@ -1,0 +1,66 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+build/
+*.dart_tool/
+flutter_*.png
+
+# Android
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+android/key.properties
+*.jks
+*.keystore
+
+# iOS
+ios/.generated/
+ios/Pods/
+ios/Podfile.lock
+ios/Runner.xcworkspace/
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/app.flx
+ios/Flutter/ephemeral/
+
+# macOS
+macos/Flutter/Generated.xcconfig
+macos/Flutter/ephemeral/
+
+# Linux
+linux/Flutter/ephemeral/
+
+# Windows
+windows/Flutter/ephemeral/
+windows/runner/*.exe
+windows/runner/*.dll
+windows/runner/*.lib
+windows/build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment/Secrets
+.env
+.env.local
+*.env
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Coverage
+coverage/
+*.lcov

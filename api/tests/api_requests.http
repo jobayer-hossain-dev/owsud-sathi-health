@@ -1,0 +1,105 @@
+### Base URL
+@baseUrl = http://localhost:3001/api/v1
+@token = YOUR_JWT_TOKEN_HERE
+@adminToken = YOUR_ADMIN_TOKEN_HERE
+
+### 1. Health Check
+GET {{baseUrl}}/health
+
+### 2. Auth - Send OTP
+POST {{baseUrl}}/auth/send-otp
+Content-Type: application/json
+
+{
+  "phone": "01712345678"
+}
+
+### 3. Auth - Verify OTP (Check terminal log for the OTP in dev mode)
+POST {{baseUrl}}/auth/verify-otp
+Content-Type: application/json
+
+{
+  "phone": "01712345678",
+  "code": "123456"
+}
+
+### 4. Auth - Register User
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "phone": "01712345678",
+  "name": "রাকিব হাসান",
+  "password": "Password123!",
+  "otp_verified_token": "PASTE_TOKEN_FROM_STEP_3"
+}
+
+### 5. Auth - Login User
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "phone": "01712345678",
+  "password": "Password123!"
+}
+
+### 6. Search Medicines (Public)
+GET {{baseUrl}}/medicines?q=Napa&limit=10
+
+### 7. Generic Alternatives Finder (Public)
+GET {{baseUrl}}/medicines/1/alternatives
+
+### 8. User Medicines - Add Medicine
+POST {{baseUrl}}/user-medicines
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "medicine_id": 1,
+  "dosage": "১টি ট্যাবলেট",
+  "frequency": "twice_daily",
+  "times": ["08:00", "20:00"],
+  "meal_instruction": "after_meal",
+  "start_date": "2026-08-17",
+  "total_quantity": 20,
+  "refill_alert_days": 3,
+  "notes": "জ্বর কমলে বন্ধ করবেন"
+}
+
+### 9. User Medicines - Get My List
+GET {{baseUrl}}/user-medicines
+Authorization: Bearer {{token}}
+
+### 10. Dose Logs - Today's Schedule
+GET {{baseUrl}}/dose-logs?date=2026-08-17
+Authorization: Bearer {{token}}
+
+### 11. Health Logs - Record Blood Pressure
+POST {{baseUrl}}/health-logs
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "type": "blood_pressure",
+  "value_1": 120,
+  "value_2": 80,
+  "unit": "mmHg",
+  "notes": "বিকেলে মাপ নেওয়া হয়েছে"
+}
+
+### 12. Health Logs - Generate PDF Report
+GET {{baseUrl}}/health-logs/report/pdf?days=30
+Authorization: Bearer {{token}}
+
+### 13. Admin - Login
+POST {{baseUrl}}/admin/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@oshudhsathi.com",
+  "password": "admin123"
+}
+
+### 14. Admin - Dashboard Stats
+GET {{baseUrl}}/admin/dashboard/stats
+Authorization: Bearer {{adminToken}}
