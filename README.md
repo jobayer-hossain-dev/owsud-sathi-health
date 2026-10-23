@@ -18,6 +18,13 @@
 
 ---
 
+## Links
+
+- [Source code](https://github.com/jobayer-hossain-dev/owsud-sathi-health)
+- [Developer portfolio](https://jobayerportfolio.vercel.app)
+
+A standalone public deployment URL is not currently documented for this repository.
+
 ## 📄 License
 
 Copyright © Owsud Sathi Healthtech.
